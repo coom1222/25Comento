@@ -1,6 +1,6 @@
 /* 기본 스타일 & 폰트 설정 */
 body {
-  font-family: 'Pretendard', sans-serif; /* 선호하는 폰트로 변경 가능 */
+  font-family: 'Pretendard', sans-serif;
   line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
