@@ -1,0 +1,129 @@
+/* 기본 스타일 & 폰트 설정 */
+body {
+  font-family: 'Pretendard', sans-serif; /* 선호하는 폰트로 변경 가능 */
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+/* 전체 레이아웃 컨테이너 */
+.resume-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden; /* 모서리 둥글게 처리 */
+}
+
+/* --- 왼쪽 사이드바 --- */
+.sidebar {
+  width: 35%;
+  padding: 30px;
+  background-color: #2c3e50; /* 어두운 배경색 */
+  color: #ecf0f1; /* 밝은 글자색 */
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* 이미지 원형으로 */
+  object-fit: cover;
+  border: 5px solid #34495e;
+}
+
+.name {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.job-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 300;
+  color: #95a5a6;
+}
+
+.sidebar .section-title {
+  color: #fff;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+/* --- 오른쪽 메인 콘텐츠 --- */
+.main-content {
+  width: 65%;
+  padding: 30px;
+}
+
+.main-content .section-title {
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 5px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.main-content section {
+  margin-bottom: 30px;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+.item h3 {
+  margin: 0 0 5px 0;
+  color: #3498db;
+}
+
+.item .date {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.item ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+/* --- 반응형 웹 디자인 (모바일 화면) --- */
+@media (max-width: 768px) {
+  .resume-container {
+    flex-direction: column; /* 세로 정렬로 변경 */
+  }
+
+  .sidebar,
+  .main-content {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+}
