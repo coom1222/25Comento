@@ -1,0 +1,77 @@
+body {
+    display: flex;              /* flex를 주어 row, column을 줄 수 있게 */
+    justify-content: center;    /* 가운데 정렬 */
+    align-items: center;        /* 가운데 정렬 */
+    height: 100vh;              /* 화면 전체 높이 사용 */
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.calculator {
+    width: 400px;
+    height: auto;
+    /*aspect-ratio: 1 / 2; 가로 세로 비율을 1:1.5로 설정 */
+    border: 1px solid #ccc; /* 두께가 1픽셀인 회색 실선 테두리 */
+    border-radius: 10px;    /* 모서리 둥글게 처리 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 그림자 효과 */
+    background-color: #333;
+    padding: 25px;  /* 안쪽 여백 주기 */
+}
+
+.display {
+    background-color: #444;
+    color: white;
+    font-size: 3.5em;
+    text-align: right;      /* 오른쪽 정렬 */
+    padding: 20px;
+    border-radius: 5px;     /* 모서리 둥글게 처리 */
+    margin-bottom: 20px;    /* 버튼들과 간격 */
+    height: 80px;   /* 숫자 고정 높이 설정 */
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: grid;  /* 그리드(격자) 레이아웃 사용 */
+    grid-template-columns: repeat(4, 1fr);  /* 4개의 열 동일하게 나누기 */
+    gap: 15px;  /* 버튼 사이의 간격 */
+}
+
+/* 개별 버튼 */
+.button {
+    background-color: #666;
+    color: white;
+    border: none;   /* 테두리 제거 */
+    border-radius: 5px;
+    padding: 25px;
+    font-size: 2em;
+    cursor: pointer;    /* 마우스 올리면 손가락모양 */
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #777;
+}
+
+.button:active {
+    background-color: #555;
+}
+
+/* AC, +-, % */
+.function {
+    background-color: #a5a5a5;
+    color: black;
+}
+
+/* %, x, -,+,= */
+.operator {
+    background-color: #f39c12;
+}
+
+.operator:hover {
+    background-color: #f5b041;
+}
+
+.zero {
+    grid-column: span 2;    /* 0 버튼은 두 칸을 차지 */
+    text-align: right;
+}

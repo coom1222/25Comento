@@ -10,7 +10,7 @@ body {
 
 /* 전체 레이아웃 컨테이너 */
 .resume-container {
-  display: flex;
+  display: flex;  /* 자식 요소인 .sidebar와 .main-content를 가로로 배치함 */
   max-width: 1000px;
   margin: 0 auto;
   background-color: #fff;
@@ -36,7 +36,7 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%; /* 이미지 원형으로 */
-  object-fit: cover;
+  object-fit: cover;  /* cover 속성을 활용하여 사진이 찌그러지는 것을 방지 */
   border: 5px solid #34495e;
 }
 
@@ -76,6 +76,7 @@ body {
   padding: 30px;
 }
 
+/* 각 섹션 아래에 구분선 추가 */
 .main-content .section-title {
   color: #2c3e50;
   border-bottom: 2px solid #2c3e50;
@@ -110,6 +111,7 @@ body {
 }
 
 /* --- 반응형 웹 디자인 (모바일 화면) --- */
+/* 모바일 화면에서(혹은 768px 이하일 때) */
 @media (max-width: 768px) {
   .resume-container {
     flex-direction: column; /* 세로 정렬로 변경 */
