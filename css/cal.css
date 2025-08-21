@@ -73,5 +73,5 @@ body {
 
 .zero {
     grid-column: span 2;    /* 0 버튼은 두 칸을 차지 */
-    text-align: right;
+    text-align: left;
 }
