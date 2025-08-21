@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.battery-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+}
+
+.clock-display {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    transition: background-color 0.5s ease;
+}
+
+.clock-display.black-background {
+    background-color: black;
+    color: black; /* Hide text by making it black on black */
+}
+
+.alarm-status h3,
+.alarm-setting h3 {
+    color: #444;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+#alarmList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 120px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#alarmList li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+    color: #666;
+}
+
+#alarmList li:last-child {
+    border-bottom: none;
+}
+
+.alarm-setting input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.alarm-setting button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.alarm-setting button:hover {
+    background-color: #0056b3;
+}
+
+/* FR5: Red flashing effect */
+.red-flash {
+    animation: flashRed 0.5s infinite alternate;
+}
+
+@keyframes flashRed {
+    from { background-color: #f0f0f0; }
+    to { background-color: #ffcccc; }
+}

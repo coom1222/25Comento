@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Clock & Alarm</title>
+    <link rel="stylesheet" href="css/watch.css">
+</head>
+<body>
+    <div class="container">
+        <div class="battery-display">배터리: <span id="batteryPercentage">100</span>%</div>
+        <div class="clock-display" id="clockDisplay">
+            <span id="currentDate"></span> <span id="currentTime"></span>
+        </div>
+        <div class="alarm-status">
+            <h3>알람 현황 (최대 3개)</h3>
+            <ul id="alarmList">
+                <!-- Alarms will be listed here -->
+            </ul>
+        </div>
+        <div class="alarm-setting">
+            <h3>알람 설정</h3>
+            <input type="number" id="alarmHour" placeholder="시" min="0" max="23">
+            <input type="number" id="alarmMinute" placeholder="분" min="0" max="59">
+            <input type="number" id="alarmSecond" placeholder="초" min="0" max="59">
+            <button id="addAlarmButton">추가</button>
+        </div>
+    </div>
+
+    <script src="js/watch.js"></script>
+</body>
+</html>
