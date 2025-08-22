@@ -1,109 +1,111 @@
+/* 기본 */
+* { box-sizing: border-box; }
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    min-height: 100vh; margin: 0;
+    display: grid; place-items: center;
+    background: #f0f0f0; color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    transition: background-color 0.3s ease;
+    transition: background-color .3s ease;
 }
 
+/* 컨테이너: 테두리 상자 */
 .container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
-}
-
-.battery-display {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #555;
-}
-
-.clock-display {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin: 20px 0;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    transition: background-color 0.5s ease;
-}
-
-.clock-display.black-background {
-    background-color: black;
-    color: black; /* Hide text by making it black on black */
-}
-
-.alarm-status h3,
-.alarm-setting h3 {
-    color: #444;
-    margin-top: 25px;
-    margin-bottom: 15px;
-}
-
-#alarmList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 120px;
-    overflow-y: auto;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-#alarmList li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    font-size: 1.1em;
-    color: #666;
-}
-
-#alarmList li:last-child {
-    border-bottom: none;
-}
-
-.alarm-setting input[type="number"] {
-    width: 60px;
-    padding: 8px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
+    position: relative;
+    width: clamp(680px, 70vw, 920px);
+    background:#fff;
+    border:1px solid #7c8896;
     border-radius: 4px;
-    text-align: center;
-    font-size: 1em;
+    padding: 28px;
 }
 
-.alarm-setting button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
+/* 배터리 칩(상단 우측) */
+.battery-chip{
+    position:absolute; top:18px; right:18px;
+    background:#e9e9e9; border:1px solid #9aa3ad; border-radius:4px;
+    padding:8px 12px; font-weight:600;
 }
 
-.alarm-setting button:hover {
-    background-color: #0056b3;
+/* 중단 2열 레이아웃 */
+.grid{
+    display:grid;
+    grid-template-columns: 1fr 320px; /* 좌: 유동, 우: 고정폭 */
+    gap: 24px;
+    align-items: start;
+    margin-top: 28px;
 }
 
-/* FR5: Red flashing effect */
-.red-flash {
-    animation: flashRed 0.5s infinite alternate;
+.col .label{
+    margin:0 0 10px 0; font-size:18px; font-weight:600;
 }
 
-@keyframes flashRed {
-    from { background-color: #f0f0f0; }
-    to { background-color: #ffcccc; }
+/* 시간 박스(좌측 큰 박스) */
+.clock-box{
+    height: 90px;
+    display:flex; align-items:center; justify-content:center;
+    background:#e6e6e6; border:1px solid #9aa3ad; border-radius:4px;
+    font-size: 20px; font-weight:600; letter-spacing:.3px;
+    gap: 8px;
+}
+
+/* 기존 JS가 토글하는 클래스 유지 */
+.clock-display.black-background{
+    background:#000; color:#000;
+}
+
+/* 알람 현황(우측 박스) */
+.alarm-box{
+    height: 120px;
+    background:#e9e9e9; border:1px solid #9aa3ad; border-radius:4px;
+    padding: 8px; overflow:auto;
+}
+#alarmList{
+    list-style:none; margin:0; padding:0;
+}
+#alarmList li{
+    padding:8px 6px; border-bottom:1px solid #d7d7d7; color:#555;
+}
+#alarmList li:last-child{ border-bottom:none; }
+
+/* 하단 입력 행 */
+.alarm-row{
+    display:flex; align-items:center; gap:10px;
+    margin-top: 26px;
+}
+
+.alarm-row .label{ font-size:18px; font-weight:600; margin-right:6px; }
+
+/* 작은 박스 형태의 입력+제목 칩 */
+.chip{
+    display:flex; align-items:center; gap:8px;
+    background:#e9e9e9; border:1px solid #9aa3ad; border-radius:4px;
+    padding: 6px 10px; font-weight:600;
+}
+.chip input[type="number"]{
+    width: 56px; height: 30px;
+    border:1px solid #b9c1c9; border-radius:3px;
+    background:#fff; text-align:center; font-size:14px;
+    outline:none;
+}
+
+/* 추가 버튼 */
+.add-btn{
+    height: 34px; padding: 0 16px;
+    background:#e9eef6; border:1px solid #9aa3ad; border-radius:4px;
+    font-weight:700; cursor:pointer;
+}
+.add-btn:hover{ background:#dce6f4; }
+
+/* 알람 근접 시 깜빡임(기존 유지) */
+.red-flash { animation: flashRed .5s infinite alternate; }
+@keyframes flashRed{
+    from { background-color:#f0f0f0; }
+    to   { background-color:#ffcccc; }
+}
+
+/* 반응형: 폭이 좁을 때 우측 컬럼도 유동화 */
+@media (max-width: 860px){
+    .container{ width: 92vw; }
+    .grid{ grid-template-columns: 1fr; }
+    .alarm-col{ order: 2; }
+    .time-col{ order: 1; }
 }

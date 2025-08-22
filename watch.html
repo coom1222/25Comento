@@ -3,30 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini Clock & Alarm</title>
+    <title>알람시계</title>
     <link rel="stylesheet" href="css/watch.css">
 </head>
 <body>
-    <div class="container">
-        <div class="battery-display">배터리: <span id="batteryPercentage">100</span>%</div>
-        <div class="clock-display" id="clockDisplay">
-            <span id="currentDate"></span> <span id="currentTime"></span>
-        </div>
-        <div class="alarm-status">
-            <h3>알람 현황 (최대 3개)</h3>
-            <ul id="alarmList">
-                <!-- Alarms will be listed here -->
-            </ul>
-        </div>
-        <div class="alarm-setting">
-            <h3>알람 설정</h3>
-            <input type="number" id="alarmHour" placeholder="시" min="0" max="23">
-            <input type="number" id="alarmMinute" placeholder="분" min="0" max="59">
-            <input type="number" id="alarmSecond" placeholder="초" min="0" max="59">
-            <button id="addAlarmButton">추가</button>
-        </div>
+<div class="container">
+    <!-- 상단 우측 배터리 -->
+    <div class="battery-chip">
+        배터리 : <span id="batteryPercentage">100</span>%
     </div>
 
-    <script src="js/watch.js"></script>
+    <!-- 중단 2열 레이아웃 -->
+    <div class="grid">
+        <!-- 좌측: 시간 -->
+        <section class="col time-col">
+            <h3 class="label">시간</h3>
+            <div class="clock-box clock-display" id="clockDisplay" aria-live="off">
+                <span id="currentDate"></span>
+                <span id="currentTime"></span>
+            </div>
+        </section>
+
+        <!-- 우측: 알람 현황 -->
+        <section class="col alarm-col">
+            <h3 class="label">알람 현황</h3>
+            <div class="alarm-box">
+                <ul id="alarmList"></ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- 하단: 알람 입력 라인 -->
+    <div class="alarm-row">
+        <span class="label">알람</span>
+
+        <label class="chip">시
+            <input type="number" id="alarmHour" placeholder="시" min="0" max="23" />
+        </label>
+
+        <label class="chip">분
+            <input type="number" id="alarmMinute" placeholder="분" min="0" max="59" />
+        </label>
+
+        <label class="chip">초
+            <input type="number" id="alarmSecond" placeholder="초" min="0" max="59" />
+        </label>
+
+        <button id="addAlarmButton" class="add-btn">추가</button>
+    </div>
+</div>
+
+<script src="js/watch.js"></script>
 </body>
 </html>
