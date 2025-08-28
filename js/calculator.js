@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const display = document.querySelector('.display');
+    const display = document.querySelector('.display'); // 모든 버튼 클릭을 바인딩, 스트 콘텐츠로 버튼 기능을 슬라이싱
     const buttons = document.querySelectorAll('.button');
 
     let currentInput = '';
@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const value = button.textContent;
 
-            if (value >= '0' && value <= '9') {
+            if (value >= '0' && value <= '9') { // 숫자 입력
                 if (resultDisplayed) {
                     currentInput = value;
                     resultDisplayed = false;
                 } else {
                     currentInput += value;
                 }
-            } else if (['+', '-', '×', '÷'].includes(value)) {
+            } else if (['+', '-', '×', '÷'].includes(value)) {  // 연산자 입력
                 if (currentInput === '' && previousInput === '') return; // Prevent starting with an operator
 
                 if (previousInput !== '' && operator !== null && currentInput !== '') {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 operator = value;
                 currentInput = '';
                 resultDisplayed = false;
-            } else if (value === '=') {
+            } else if (value === '=') { // = 연산자가 입력되면 calculate() 호출
                 if (currentInput === '' || previousInput === '' || operator === null) return; // Not enough operands/operator
                 calculate();
                 operator = null;
@@ -41,15 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 operator = null;
                 previousInput = '';
                 resultDisplayed = false;
-            } else if (value === '.') {
+            } else if (value === '.') { // 소숫점 중복 방지
                 if (!currentInput.includes('.')) {
                     currentInput += '.';
                 }
-            } else if (value === '+/-') {
+            } else if (value === '+/-') {   // 부호 반전
                 if (currentInput !== '') {
                     currentInput = (parseFloat(currentInput) * -1).toString();
                 }
-            } else if (value === '%') {
+            } else if (value === '%') { // 백분율
                 if (currentInput !== '') {
                     currentInput = (parseFloat(currentInput) / 100).toString();
                 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todolist</title>
+    <link rel="stylesheet" href="css/todo.css" />
+</head>
+<body>
+<main class="app" aria-labelledby="app-title">
+    <header>
+        <h1 id="app-title">📋 Todolist</h1>
+        <span class="count" id="count">0개</span>    <!-- 총 일정 개수 -->
+    </header>
+
+    <!--form 태그 활용하여 할일 입력 받음-->
+    <form id="todo-form" autocomplete="off" aria-label="일정 추가">
+        <input id="todo-input" type="text" placeholder="할 일을 입력하고 Enter 또는 추가 버튼" />
+        <button class="add" type="submit" aria-label="추가">추가</button>
+    </form>
+
+    <ul id="todo-list" aria-live="polite" aria-label="일정 목록"></ul>
+    <div class="empty" id="empty-state" hidden>아직 일정이 없어요. 상단 입력창에 입력해 추가해보세요!</div>
+
+    <footer>
+        <div class="filter" role="tablist" aria-label="필터">
+            <button class="chip active" data-filter="all" role="tab" aria-selected="true">전체</button>
+            <button class="chip" data-filter="active" role="tab" aria-selected="false">진행중</button>
+            <button class="chip" data-filter="done" role="tab" aria-selected="false">완료</button>
+        </div>
+        <button class="icon-btn danger" id="clear-done" type="button">완료 삭제</button>
+    </footer>
+</main>
+
+<script src="js/todo.js" defer></script>
+</body>
+</html>

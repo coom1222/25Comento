@@ -1,7 +1,6 @@
 // js/watch.js
 
 (function () {
-    // ---------- DOM refs ----------
     const clockDisplay = document.getElementById('clockDisplay');
     const currentDateEl = document.getElementById('currentDate');
     const currentTimeEl = document.getElementById('currentTime');
@@ -15,7 +14,7 @@
 
     const containerEl = document.querySelector('.container');
 
-    // ---------- State ----------
+    // ---------- 상태변수 ----------
     let battery = 100;                 // 시작 100%
     let batteryTimerId = null;
     let clockTimerId = null;
@@ -24,7 +23,7 @@
     const MAX_ALARMS = 3;
     let alarms = [];
 
-    // ---------- Utilities ----------
+    // ---------- 공통 ----------
     const pad2 = (n) => String(n).padStart(2, '0');
 
     function formatDateTime(d = new Date()) {
@@ -176,10 +175,8 @@
         const now = getNowHms();
         const matchIndex = alarms.findIndex((t) => t === now);
         if (matchIndex !== -1) {
-            // 간단한 알람 동작: 컨테이너 붉게 깜빡임 + alert
             containerEl.classList.add('red-flash');
 
-            // 몇 초간 깜빡인 뒤 해제
             setTimeout(() => {
                 containerEl.classList.remove('red-flash');
             }, 3000);
