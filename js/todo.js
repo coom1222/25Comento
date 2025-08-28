@@ -144,5 +144,19 @@ $input.addEventListener('keydown', (e) => {
     }
 });
 
+// 전체 완료
+// 모든 할 일을 순회하며 아직 완료되지 않은 false인 항목을 true로 변경
+const $bulkDone = document.getElementById('bulk-done');
+$bulkDone.addEventListener('click', () => {
+    let changed = false;
+    state.todos.forEach(t => {
+        if (!t.done) {
+            t.done = true;
+            changed = true;
+        }
+    });
+    if (changed) { save(); render(); }
+});
+
 // 초기 렌더
 render();

@@ -137,6 +137,11 @@ li {
     gap: 6px;
 }
 
+.actions-bar {
+    display: flex;
+    gap: 8px;
+}
+
 .icon-btn {
     border: 1px solid #263246;
     background: #0c1526;
