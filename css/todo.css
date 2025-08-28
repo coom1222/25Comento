@@ -1,3 +1,8 @@
+
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --bg: #0f172a;
     --panel: #111827;
@@ -7,10 +12,6 @@
     --danger: #f87171;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -18,7 +19,7 @@ body {
     color: var(--text);
     min-height: 100vh;
     display: grid;
-    place-items: center;
+    place-items: center;    /* 가운데 정렬 */
     padding: 24px;
 }
 
@@ -53,7 +54,7 @@ h1 {
 
 form {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto;    /* 왼쪽은 1fr, 오른쪽은 추가 버튼 자동분할 */
     gap: 10px;
 }
 
@@ -94,6 +95,7 @@ ul {
     gap: 8px;
 }
 
+/* 각 할 일 항목 */
 li {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -117,6 +119,7 @@ li {
     word-break: break-word;
 }
 
+/* 완료된 항목은 줄 긋고 흐리게 */
 .done .title {
     color: #94a3b8;
     text-decoration: line-through;
@@ -145,7 +148,7 @@ li {
 }
 
 .icon-btn:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.8);
 }
 
 .icon-btn.danger {
@@ -177,7 +180,7 @@ footer {
     gap: 6px;
 }
 
-.chip {
+.state {
     border: 1px solid #263246;
     background: #0c1526;
     color: #cbd5e1;
@@ -187,7 +190,7 @@ footer {
     font-size: 12px;
 }
 
-.chip.active {
+.state.active {
     border-color: #3b82f6;
     color: #bfdbfe;
 }

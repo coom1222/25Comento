@@ -1,9 +1,12 @@
 // --- 간단 상태 & 저장소 ---
 const STORAGE_KEY = 'todolist.v1';
+// state.todos에 { id, title, done, createdAt } 객체들이 담김. 즉, 모든 할 일 보관
 const state = {
     todos: load() // [{id, title, done, createdAt}]
 };
 
+// 로칼스토리지에 저장함으로서 새로고침해도 데이터 유지
+// 브라우저 내부에 json형식으로 저장, 별도의 파일 생성 X
 function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todos)); }
 function load() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []; }
@@ -16,16 +19,18 @@ const $input = document.getElementById('todo-input');
 const $list = document.getElementById('todo-list');
 const $count = document.getElementById('count');
 const $empty = document.getElementById('empty-state');
-const $filters = document.querySelectorAll('.chip');
+const $filters = document.querySelectorAll('.state');
 const $clearDone = document.getElementById('clear-done');
 let currentFilter = 'all';
 
-// --- 유틸 ---
+// 자동으로 id 생성
 const uid = () => Math.random().toString(36).slice(2, 9);
+// 날짜 포맷팅
 const fmt = (ts) => new Date(ts).toLocaleString();
 
-// --- 렌더 ---
+// render 함수 정의
 function render() {
+    // 현재 필터에 맞는 목록
     const filtered = state.todos.filter(t => {
         if (currentFilter === 'active') return !t.done;
         if (currentFilter === 'done') return t.done;
@@ -35,6 +40,7 @@ function render() {
     $list.innerHTML = '';
     filtered.forEach(t => $list.appendChild(renderItem(t)));
 
+    // 총 개수 업데이트
     $count.textContent = `${state.todos.length}개`;
     const empty = state.todos.length === 0 || filtered.length === 0;
     $empty.hidden = !empty;
@@ -45,12 +51,14 @@ function renderItem(todo) {
     li.dataset.id = todo.id;
     if (todo.done) li.classList.add('done');
 
+    // 체크박스
     const box = document.createElement('input');
     box.type = 'checkbox';
     box.className = 'todo-check';
     box.checked = todo.done;
     box.setAttribute('aria-label', '완료 전환');
 
+    // 제목과 내용(날짜/시간)
     const content = document.createElement('div');
     const title = document.createElement('div');
     title.className = 'title';
@@ -65,6 +73,8 @@ function renderItem(todo) {
 
     const actions = document.createElement('div');
     actions.className = 'actions';
+
+    // 삭제 버튼
     const del = document.createElement('button');
     del.className = 'icon-btn danger';
     del.type = 'button';
@@ -81,16 +91,17 @@ function renderItem(todo) {
 
 // --- 이벤트 ---
 $form.addEventListener('submit', (e) => {
+    // 새로고침 방지를 통해 사용자 경험 개선
     e.preventDefault();
     const title = $input.value.trim();
     if (!title) return;
-    state.todos.unshift({ id: uid(), title, done: false, createdAt: Date.now() });
+    state.todos.push({ id: uid(), title, done: false, createdAt: Date.now() });
     save(); render();
     $input.value = '';
     $input.focus();
 });
 
-// 이벤트 위임: 체크/삭제
+// 체크/삭제 이벤트
 $list.addEventListener('click', (e) => {
     const li = e.target.closest('li');
     if (!li) return;
@@ -125,7 +136,7 @@ $clearDone.addEventListener('click', () => {
     if (state.todos.length !== before) { save(); render(); }
 });
 
-// Enter로 추가(모바일 가상키보드 대응)
+// Enter로 추가
 $input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.isComposing) {
         e.preventDefault();

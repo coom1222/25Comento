@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/todo.css" />
 </head>
 <body>
-<main class="app" aria-labelledby="app-title">
+<main class="app" aria-labelledby="app-title">  <!-- aria-labelledby를 통해 그룹으로 묶어줌 -->
     <header>
         <h1 id="app-title">📋 Todolist</h1>
         <span class="count" id="count">0개</span>    <!-- 총 일정 개수 -->
@@ -20,15 +20,16 @@
     </form>
 
     <ul id="todo-list" aria-live="polite" aria-label="일정 목록"></ul>
-    <div class="empty" id="empty-state" hidden>아직 일정이 없어요. 상단 입력창에 입력해 추가해보세요!</div>
+    <!--id = "empty-state" 를 사용해 목록이 비어있는경우 알림-->
+    <div class="empty" id="empty-state" hidden>아직 일정이 없어요. 일정을 추가하고 실행해 옮겨보아요!</div>
 
     <footer>
         <div class="filter" role="tablist" aria-label="필터">
-            <button class="chip active" data-filter="all" role="tab" aria-selected="true">전체</button>
-            <button class="chip" data-filter="active" role="tab" aria-selected="false">진행중</button>
-            <button class="chip" data-filter="done" role="tab" aria-selected="false">완료</button>
+            <button class="state active" data-filter="all" role="tab" aria-selected="true">전체</button>
+            <button class="state" data-filter="active" role="tab" aria-selected="false">진행중</button>
+            <button class="state" data-filter="done" role="tab" aria-selected="false">완료</button>
         </div>
-        <button class="icon-btn danger" id="clear-done" type="button">완료 삭제</button>
+        <button class="icon-btn danger" id="clear-done" type="button">완료한 일정 삭제</button>
     </footer>
 </main>
 

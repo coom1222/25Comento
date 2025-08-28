@@ -75,12 +75,12 @@ body {
 .alarm-row .label{ font-size:18px; font-weight:600; margin-right:6px; }
 
 /* 작은 박스 형태의 입력+제목 칩 */
-.chip{
+.state{
     display:flex; align-items:center; gap:8px;
     background:#e9e9e9; border:1px solid #9aa3ad; border-radius:4px;
     padding: 6px 10px; font-weight:600;
 }
-.chip input[type="number"]{
+.state input[type="number"]{
     width: 56px; height: 30px;
     border:1px solid #b9c1c9; border-radius:3px;
     background:#fff; text-align:center; font-size:14px;
